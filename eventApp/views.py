@@ -1,10 +1,8 @@
 # from django.shortcuts import render
-# from django.http import HttpResponse
+from django.http import HttpResponse
 
 # # Create your views here.
 
-# def index(request):
-#     return HttpResponse("Hello, world. You're at the events index.")
 from django.shortcuts import get_object_or_404
 from django.views import View
 from django.views.generic import ListView, DetailView
@@ -21,6 +19,8 @@ from .models import Team, Player
 #         context['players'] = self.object.players.all()  # Fetch players related to the team
 #         return context
 
+def index(request):
+    return HttpResponse("Hello, world. You're at the events index.")
 
 # List all teams
 class TeamListView(ListView):
@@ -41,36 +41,36 @@ class TeamDetailView(DetailView):
         context['players'] = self.object.players.all()  # Fetch players related to this team
         return context
 
-# # Create a new team
-# class TeamCreateView(View):
-#     def get(self, request):
-#         # Logic for displaying a form to create a new team
-#         # return render(request, 'EventApp/team_form.html', {'form': form})
-#         pass
+# Create a new team
+class TeamCreateView(View):
+    def get(self, request):
+        # Logic for displaying a form to create a new team
+        # return render(request, 'EventApp/team_form.html', {'form': form})
+        pass
 
-#     def post(self, request):
-#         # Logic for handling form submission to create a new team
-#         # if form.is_valid():
-#         #     form.save()
-#         #     return redirect('team_list')
-#         pass
+    def post(self, request):
+        # Logic for handling form submission to create a new team
+        # if form.is_valid():
+        #     form.save()
+        #     return redirect('team_list')
+        pass
 
-# # Update an existing team
-# class TeamUpdateView(View):
-#     def get(self, request, pk):
-#         # Logic for displaying a form to update a team
-#         pass
+# Update an existing team
+class TeamUpdateView(View):
+    def get(self, request, pk):
+        # Logic for displaying a form to update a team
+        pass
 
-#     def post(self, request, pk):
-#         # Logic for handling form submission to update a team
-#         pass
+    def post(self, request, pk):
+        # Logic for handling form submission to update a team
+        pass
 
-# # Delete a team
-# class TeamDeleteView(View):
-#     def get(self, request, pk):
-#         # Logic for confirming deletion of a team
-#         pass
+# Delete a team
+class TeamDeleteView(View):
+    def get(self, request, pk):
+        # Logic for confirming deletion of a team
+        pass
 
-#     def post(self, request, pk):
-#         # Logic for deleting a team
-#         pass
+    def post(self, request, pk):
+        # Logic for deleting a team
+        pass
