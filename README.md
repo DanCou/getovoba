@@ -22,6 +22,6 @@ Credentials : admin/admin
 
 http://127.0.0.1:8000/events
 
-Ajouter un tournoi
-Modifier un tournoi
-Supprimer un tournoi
+- Ajouter un tournoi
+- Modifier un tournoi
+- Supprimer un tournoi
