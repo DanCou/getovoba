@@ -1,0 +1,23 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Liste des tournois{% endblock %}
+
+{% block content %}
+    <div class="container lead text-center">
+        <h1>Liste des tournois</h1>  <!-- Custom greeting -->
+        <p>Nombre d'évènements: {{ total_events }}</p>  <!-- Total events count -->
+
+        <ul>
+            {% for event in events %}
+                <p><a href="{% url 'event-detail' event.pk %}">{{ event.name }} - {{ event.date|date:"Y-F-d-l" }} - {{event.players}}x{{event.players}} - {{event.mode}}</a></p>
+            {% empty %}
+            <p>Aucun tournoi pour le moment</p>
+            {% endfor %}
+        </ul>
+
+        <div>
+            <a href="{% url 'event-add' %}" class="btn btn-primary">Ajouter un tournoi</a>
+        </div>
+    </div>
+{% endblock %}    
+

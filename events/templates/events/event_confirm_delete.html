@@ -1,0 +1,22 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Confirmer la suppression du tournoi ?{% endblock %}
+
+{% block content %}
+    <div class="container lead text-center">
+        <h2>Confirmer la suppression du tournoi ?</h2>
+        <p>Etes vous sûr de vouloir supprimer le tournoi : <strong>{{ event.name }} - {{ event.date|date:"Y-F-d-l" }} - {{event.players}}x{{event.players}} - {{event.mode}}</strong> ?</p>
+        
+        <form method="post">
+            <div>
+            {% csrf_token %}
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary">Supprimer</button>
+                <a href="{% url 'event-detail' event.pk %}" class="btn btn-secondary">Annuler</a>
+            </span>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

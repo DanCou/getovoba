@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Team</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}">  Optional CSS file -->
+</head>
+<body>
+    <h1>Create New Team</h1>
+
+    <form method="post" action="{% url 'team_create' %}">
+        {% csrf_token %}
+        <div>
+            <label for="id_name">Team Name:</label>
+            <input type="text" id="id_name" name="name" required>
+        </div>
+        <div>
+            <button type="submit">Create Team</button>
+        </div>
+    </form>
+
+    <p><a href="{% url 'team_list' %}">Back to Team List</a></p>  <!-- Link to go back to the team list -->
+</body>
+</html>

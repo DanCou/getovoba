@@ -1,0 +1,25 @@
+{% extends 'events/base.html' %}
+
+{% block title %}{{ event.name }} - {{ event.date|date:"Y" }}{% endblock %}
+
+{% block content %}
+    <div class="container lead text-center">
+        
+        <h2>{{ event.name }} - {{ event.date|date:"Y" }}</h2>
+        
+        {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.name }}" class="img-fluid mx-auto d-block">
+        {% endif %}
+
+        <p>{{ event.players}} joueurs par équipe</p>
+        <p>{{ event.mode }}</p>
+        <p>{{ event.date }}</p>
+        <p>{{ event.start_time }} - {{ event.end_time }}</p>
+        <p>{{ event.location }}</p>
+        {% if event.description %} <p>{{ event.description }}</p> {% endif %}
+        
+        <div>
+            <a href="{% url 'event-edit' event.pk %}" class="btn btn-primary">Modifier</a>
+            <a href="{% url 'event-delete' event.pk %}" class="btn btn-danger">Supprimer</a>
+        </div>
+{% endblock %}          
