@@ -12,7 +12,7 @@
 
 ### SuperUser
 
-Credentials : admin/admin
+Credentials : c/J
 
 ## Run
 

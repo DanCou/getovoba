@@ -26,6 +26,10 @@ class EventDetailView(DetailView):
     template_name = 'events/event_detail.html'  # Path to your template
     context_object_name = 'event'  # This is the name of the object in the template
 
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        return Event.objects.get(slug=slug)
+
 
 class EventCreateView(CreateView):
     model = Event

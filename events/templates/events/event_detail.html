@@ -19,7 +19,7 @@
         {% if event.description %} <p>{{ event.description }}</p> {% endif %}
         
         <div>
-            <a href="{% url 'event-edit' event.pk %}" class="btn btn-primary">Modifier</a>
-            <a href="{% url 'event-delete' event.pk %}" class="btn btn-danger">Supprimer</a>
+            <a href="{% url 'event-edit' event.slug %}" class="btn btn-primary">Modifier</a>
+            <a href="{% url 'event-delete' event.slug %}" class="btn btn-danger">Supprimer</a>
         </div>
 {% endblock %}          
