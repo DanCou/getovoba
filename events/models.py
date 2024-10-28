@@ -13,6 +13,7 @@ class Event(models.Model):
     location = models.CharField("Lieu", max_length=200, null=True, blank=True)
     image = models.ImageField("Image", upload_to='events/', null=True, blank=True)
     mode = models.CharField("Indoor/Outdoor", max_length=10, choices = [ ("indoor", "Indoor"), ("outdoor", "Outdoor")], default="indoor")
+    file = models.FileField("fichier HelloAsso", upload_to='uploads/', null=True, blank=True)
     slug = models.SlugField("Slug", unique=True, blank=True)
 
     def __str__(self):

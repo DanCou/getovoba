@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'debug_toolbar',
     'bootstrap4',
     'events.apps.EventsConfig',
     'django.contrib.admin',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +71,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'getovoba.wsgi.application'
 
@@ -133,3 +136,7 @@ LANGUAGES = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR / 'media')
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
