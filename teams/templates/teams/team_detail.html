@@ -1,0 +1,20 @@
+{% extends 'teams/base.html' %}
+
+{% block title %}{{ team.name }}{% endblock %}
+
+{% block content %}
+    <div class="container lead text-center">
+        
+        <h2>{{ team.name }}</h2>
+
+        <div class="small">
+            <ul>
+                {% for player in team.players %}
+                    <p>{{ player }}</p>
+                    {% empty %}
+                    <p>Aucun joueur pour le moment</p>
+                {% endfor %}
+            </ul>
+        </div>
+        
+{% endblock %}          

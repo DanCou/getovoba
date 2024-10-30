@@ -1,0 +1,22 @@
+{% extends 'players/base.html' %}
+
+{% block title %}Supprimer le joueur ?{% endblock %}
+
+{% block content %}
+    <div class="container lead text-center">
+        <h2>Supprimer le joueur ?</h2>
+        <p><strong>{{ player.slug }}</strong></p>
+        
+        <form method="post">
+            <div>
+            {% csrf_token %}
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+                <a href="{% url 'player-detail' player.slug %}" class="btn btn-secondary">Annuler</a>
+            </span>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}

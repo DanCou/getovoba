@@ -1,0 +1,14 @@
+{% extends 'players/base.html' %}
+
+{% block title %}{{ player.slug }}{% endblock %}
+
+{% block content %}
+    <div class="container lead text-center">
+        
+        <h2>{{ player.slug }}</h2>
+
+        <div class="small">
+            {{ form.as_p }}
+        </div>
+        
+{% endblock %}          

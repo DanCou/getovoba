@@ -11,9 +11,9 @@
             <ul>
                 {% for event in events %}
                     <p>
-                        <a href="{% url 'event-detail' event.slug %}">{{ event.name }} - {{ event.date|date:"Y" }} - {{ event.city}} - {{event.players}}x{{event.players}} - {{event.mode}}</a>
-                        <a href="{% url 'event-edit' event.slug %}" class="btn btn-primary"><small>Modifier</small></a>
-                        <a href="{% url 'event-delete' event.slug %}" class="btn btn-danger"><small>Supprimer</small></a>
+                        <a href="{% url 'event-detail' event.slug %}" class="btn btn-outline-success">{{ event.name }} - {{ event.date|date:"Y" }} - {{ event.city}} - {{event.players}}x{{event.players}} - {{event.mode}}</a>
+                        <a href="{% url 'event-edit' event.slug %}" class="btn btn-outline-primary"><small>Modifier</small></a>
+                        <a href="{% url 'event-delete' event.slug %}" class="btn btn-outline-danger"><small>Supprimer</small></a>
                     </p>
                 {% empty %}
                 <p>Aucun tournoi pour le moment</p>

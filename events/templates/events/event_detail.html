@@ -1,6 +1,6 @@
 {% extends 'events/base.html' %}
 
-{% block title %}{{ event.name }} - {{ event.date|date:"Y" }}{% endblock %}
+{% block title %}{{ event.name }} - {{ event.date|date:"Y" }} - {{ event.city }}{% endblock %}
 
 {% block content %}
     <div class="container lead text-center">
@@ -25,6 +25,29 @@
             <p>{{ event.start_time }} - {{ event.end_time }}</p>
             <p>{{ event.location }}</p>
             {% if event.description %} <p>{{ event.description }}</p> {% endif %}
+        </div>
+
+        
+        <div class="container bg-info text-dark p-3">
+            <h3>Equipes</h3>
+            <div class="row">
+                {% for team in teams %}
+                    <div class="col-md-4 mb-4">  <!-- 3 items per row on medium and larger screens -->
+                        <div class="card">
+                            <div class="card-body">
+                                <a href="{% url 'team-detail' team.slug %}" class="btn btn-outlined-primary">{{ team.slug }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    Pas d'équipe pour le moment
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+            <a href="{% url 'team-add' event.slug %}" class="btn btn-primary">Ajouter une équipe</a>
+            
         </div>
         
 {% endblock %}          

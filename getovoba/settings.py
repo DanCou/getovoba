@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'bootstrap4',
     'events.apps.EventsConfig',
+    'teams.apps.TeamsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -140,3 +141,19 @@ MEDIA_ROOT = Path(BASE_DIR / 'media')
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#     },
+# }

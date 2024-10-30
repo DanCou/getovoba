@@ -1,0 +1,29 @@
+{% extends 'players/base.html' %}
+
+{% block title %}Liste des joueurs{% endblock %}
+
+{% block content %}
+    <div class="container lead text-align-right">
+        <h2>Liste des joueurs</h2> 
+        <p>Nombre de joueurs: {{ total_players }}</p>  <!-- Total players count -->
+
+        <div class="small">
+            <ul>
+                {% for player in players %}
+                    <p>
+                        <a href="{% url 'player-detail' player.slug %}" class="btn btn-outline-success">{{ player.slug }}</a>
+                        <a href="{% url 'player-edit' player.slug %}" class="btn btn-outline-primary"><small>Modifier</small></a>
+                        <a href="{% url 'player-delete' player.slug %}" class="btn btn-outline-danger"><small>Supprimer</small></a>
+                    </p>
+                {% empty %}
+                <p>Aucun joueur pour le moment</p>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div>
+            <a href="{% url 'player-add' %}" class="btn btn-primary">Ajouter un joueur</a>
+        </div>
+    </div>
+{% endblock %}    
+

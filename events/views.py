@@ -37,6 +37,15 @@ class EventDetailView(DetailView):
         queryset = queryset or self.get_queryset()
         slug = self.kwargs.get('slug')
         return get_object_or_404(queryset, slug=slug)
+    
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get the existing context
+        context = super().get_context_data(**kwargs)
+        
+        # Add additional context data
+        context['teams'] = self.object.teams.all()  # Add teams to the context
+        
+        return context
 
 
 class EventCreateView(CreateView):
@@ -89,11 +98,6 @@ class EventUpdateView(UpdateView):
     form_class = EventForm
     template_name = 'events/event_edit.html'  # Path to your template
     success_url = reverse_lazy('event-list')  # Redirect after successful update
-
-    # def get_object(self, queryset=None):
-    #     event = super().get_object(queryset)
-    #     print(event.date)  # Debugging line to check the date value
-    #     return event
     
     def get_queryset(self):
         # Return all events or filter as needed

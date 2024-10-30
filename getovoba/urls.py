@@ -23,7 +23,8 @@ from django.conf import settings
 from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
-    path("events/", include("events.urls")),
+    path("tournois/", include("events.urls")),
+    path("teams/", include("teams.urls")),
     path("admin/", admin.site.urls),
 ] + debug_toolbar_urls()
 
