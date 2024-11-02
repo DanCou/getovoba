@@ -6,7 +6,7 @@ from events.models import Event
 
 class Team(models.Model):
     name = models.CharField("Nom de l'équipe", max_length=50)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='teams', to_field='slug')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null=False, related_name='teams', to_field='slug')
     slug = models.SlugField("Slug", unique=True, blank=True, primary_key=True)
 
     def __str__(self):

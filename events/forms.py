@@ -1,6 +1,8 @@
 from django import forms
 from .models import Event
 
+from utils.utils import normalize_string
+
 import pandas as pd
 
 class EventForm(forms.ModelForm):
@@ -12,6 +14,20 @@ class EventForm(forms.ModelForm):
             'start_time': forms.TimeInput(attrs={'type': 'time'}),
             'end_time': forms.TimeInput(attrs={'type': 'time'}),
         }
+
+    # def clean_name(self):
+    #     # Clean the 'firstname' field
+    #     return normalize_string(self.cleaned_data.get('firstname'))
+    
+    def clean_city(self):
+        # Clean the 'city' field
+        return normalize_string(self.cleaned_data.get('city'))
+
+        
+    def clean_location(self):
+        # Clean the 'location' field
+        return normalize_string(self.cleaned_data.get('location'))
+
         
     def __init__(self, *args, **kwargs):
         super(EventForm, self).__init__(*args, **kwargs)
@@ -24,7 +40,7 @@ class EventForm(forms.ModelForm):
         self.fields['location'].required = False  # example of optional
         self.fields['image'].required = False  # example of optional
         self.fields['mode'].required = True  
-        self.fields['file'].required = True 
+        self.fields['file'].required = False 
 
     
     

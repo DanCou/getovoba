@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
+from django.utils.text import slugify
 from .forms import EventForm
 from .models import Event
 import pandas as pd
@@ -56,32 +57,16 @@ class EventCreateView(CreateView):
 
     def form_valid(self, form):
         # Get the uploaded file
-        uploaded_file = form.cleaned_data['file']
+        # uploaded_file = form.cleaned_data['file']
+        # event_slug = slugify(form.cleaned_data['name'] + "-" \
+        #                         + str(form.cleaned_data['date'].year) + "-" \
+        #                         + form.cleaned_data['city'])
 
-        # Read the uploaded Excel file using pandas
-        try:
-            df = pd.read_excel(uploaded_file)  # Read the file directly from the uploaded file object
-            print("@@@@@@@@@@@@@@@@@@@@")
-            print(df.head())  # Print the first few rows for debugging
-
-            # Loop through the DataFrame and create Event instances
-            # for _, row in df.iterrows():
-            #     # Assuming your DataFrame has the right columns, adjust as necessary
-            #     Event.objects.create(
-            #         name=row['name'],
-            #         players=row['players'],
-            #         date=row['date'],
-            #         start_time=row['start_time'],
-            #         end_time=row['end_time'],
-            #         city=row['city'],
-            #         location=row['location'],
-            #         image=form.cleaned_data['image'],  # Use the uploaded image if necessary
-            #         mode=form.cleaned_data['mode'],
-            #         file=uploaded_file,  # Store the uploaded file
-            #     )
-        except Exception as e:
-            form.add_error('file', f"Error processing the uploaded file: {e}")
-            return self.form_invalid(form)
+        # try:
+        #     call_command('import_data', uploaded_file, event_slug)
+        # except Exception as e:
+        #     form.add_error('file', f"Error during importing data : {e}")
+        #     return self.form_invalid(form)
 
         return super().form_valid(form)
 

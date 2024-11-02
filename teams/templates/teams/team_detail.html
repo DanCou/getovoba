@@ -2,6 +2,7 @@
 
 {% block title %}{{ team.name }}{% endblock %}
 
+
 {% block content %}
     <div class="container lead text-center">
         
@@ -9,12 +10,15 @@
 
         <div class="small">
             <ul>
-                {% for player in team.players %}
-                    <p>{{ player }}</p>
-                    {% empty %}
+                {% if team.players.count == 0 %}
                     <p>Aucun joueur pour le moment</p>
-                {% endfor %}
+                {% else %}
+                    {% for player in team.players.all %}
+                        <li>{{ player.firstname }} {{ player.lastname }}</li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </div>
         
-{% endblock %}          
+    </div>
+{% endblock %}
