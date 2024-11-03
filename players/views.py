@@ -46,14 +46,14 @@ class PlayerCreateView(CreateView):
 class PlayerDeleteView(DeleteView):
     model = Player
     template_name = 'players/player_confirm_delete.html'  # Template to confirm deletion
-    success_url = reverse_lazy('player-list')
+    success_url = reverse_lazy('team-detail')
 
 
 class PlayerUpdateView(UpdateView):
     model = Player
     form_class = PlayerForm
     template_name = 'players/player_edit.html'  # Path to your template
-    success_url = reverse_lazy('player-list')  # Redirect after successful update
+    success_url = reverse_lazy('team-detail')  # Redirect after successful update
 
     def get_queryset(self):
         # Return all events or filter as needed

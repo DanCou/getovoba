@@ -12,7 +12,7 @@
                 {{ form.as_p }}
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary">Modifier</button>
-                    <a href="{% url 'player-list' %}" class="btn btn-secondary">Annuler</a>
+                    <a href="{% url 'team-detail' player.team %}" class="btn btn-secondary">Annuler</a>
                 </span>
             </div>
         </form>

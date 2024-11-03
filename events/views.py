@@ -99,29 +99,4 @@ class EventUpdateView(UpdateView):
         # Get the uploaded file
         uploaded_file = form.cleaned_data['file']
 
-        # Read the uploaded Excel file using pandas
-        try:
-            df = pd.read_excel(uploaded_file)  # Read the file directly from the uploaded file object
-            print("@@@@@@@@@@@@@@@@@@@@")
-            print(df.head())  # Print the first few rows for debugging
-
-            # Loop through the DataFrame and create Event instances
-            # for _, row in df.iterrows():
-            #     # Assuming your DataFrame has the right columns, adjust as necessary
-            #     Event.objects.create(
-            #         name=row['name'],
-            #         players=row['players'],
-            #         date=row['date'],
-            #         start_time=row['start_time'],
-            #         end_time=row['end_time'],
-            #         city=row['city'],
-            #         location=row['location'],
-            #         image=form.cleaned_data['image'],  # Use the uploaded image if necessary
-            #         mode=form.cleaned_data['mode'],
-            #         file=uploaded_file,  # Store the uploaded file
-            #     )
-        except Exception as e:
-            form.add_error('file', f"Error processing the uploaded file: {e}")
-            return self.form_invalid(form)
-
         return super().form_valid(form)

@@ -25,6 +25,7 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 urlpatterns = [
     path("tournois/", include("events.urls")),
     path("teams/", include("teams.urls")),
+    path("players/", include("players.urls")),
     path("admin/", admin.site.urls),
 ] + debug_toolbar_urls()
 

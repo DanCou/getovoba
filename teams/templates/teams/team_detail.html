@@ -9,15 +9,18 @@
         <h2>{{ team.name }}</h2>
 
         <div class="small">
-            <ul>
                 {% if team.players.count == 0 %}
                     <p>Aucun joueur pour le moment</p>
                 {% else %}
                     {% for player in team.players.all %}
-                        <li>{{ player.firstname }} {{ player.lastname }}</li>
+                        <p>
+                            <a href="{% url 'player-detail' player.slug %}" class="btn btn-outline-success">{{player.firstname}} {{player.lastname}}</a>
+                            <a href="{% url 'player-edit' player.slug %}" class="btn btn-outline-primary"><small>Modifier</small></a>
+                            <a href="{% url 'player-delete' player.slug %}" class="btn btn-outline-danger"><small>Supprimer</small></a>
+                        </p>
+
                     {% endfor %}
                 {% endif %}
-            </ul>
         </div>
         
     </div>

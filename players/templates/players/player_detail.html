@@ -1,11 +1,13 @@
 {% extends 'players/base.html' %}
 
-{% block title %}{{ player.slug }}{% endblock %}
+{% block title %}{{ player.firstname }} {{ player.lastname }}{% endblock %}
 
 {% block content %}
     <div class="container lead text-center">
         
-        <h2>{{ player.slug }}</h2>
+        <h2>{{ player.firstname }} {{ player.lastname }}</h2>
+
+        <p>{{ player.birthday }}</p>
 
         <div class="small">
             {{ form.as_p }}
