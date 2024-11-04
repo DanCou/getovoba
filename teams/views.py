@@ -19,6 +19,7 @@ class TeamListView(ListView):
         
         # Add additional context data
         context['total_teams'] = Team.objects.count()  # Add a count of all events
+        context['event'] = Event.objects.get(slug=self.kwargs['slug'])  # Fetch the event object
 
         return context
     

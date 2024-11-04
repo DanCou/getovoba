@@ -1,29 +1,24 @@
 {% extends 'teams/base.html' %}
 
-{% block title %}Liste des équipes{% endblock %}
+{% block title %} {{event.name}} : les équipes {% endblock %}
 
 {% block content %}
     <div class="container lead text-align-right">
-        <h2>Liste des équipes</h2> 
-        <p>Nombre d'équipes: {{ total_teams }}</p>  <!-- Total teams count -->
+        <h2>{{event.name}} {{event.city}}: {{ total_teams }} équipes</h2> 
 
         <div class="small">
-            <ul>
                 {% for team in teams %}
                     <p>
-                        <a href="{% url 'team-detail' team.slug %}" class="btn btn-outline-success">{{ team.slug }}</a>
-                        <a href="{% url 'team-edit' team.slug %}" class="btn btn-outline-primary"><small>Modifier</small></a>
-                        <a href="{% url 'team-delete' team.slug %}" class="btn btn-outline-danger"><small>Supprimer</small></a>
+                        <a href="{% url 'team-detail' team.slug %}" class="btn btn-success w-25">{{ team.slug }} : {{ team.players.count }}</a>
+                        <a href="{% url 'team-edit' team.slug %}" class="btn btn-outline-primary" style="width: 8%;"><small>Modifier</small></a>
+                        <a href="{% url 'team-delete' team.slug %}" class="btn btn-outline-danger" style="width: 8%;"><small>Supprimer</small></a>
                     </p>
                 {% empty %}
                 <p>Aucune équipe pour le moment</p>
                 {% endfor %}
-            </ul>
         </div>
 
-        <div>
-            <a href="{% url 'team-add' %}" class="btn btn-primary">Ajouter une équipe</a>
-        </div>
+        
     </div>
 {% endblock %}    
 
