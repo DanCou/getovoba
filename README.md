@@ -10,6 +10,19 @@
 
     $ python -m pip install django-bootstrap4
 
+### Pillow
+
+    $ python -m pip install --upgrade Pillow
+
+### Pandas
+
+    $ python -m pip install pandas
+
+### Debug Toolbar
+
+$ python3.13 -m pip install django-debug-toolbar
+
+
 ### SuperUser
 
 Credentials : c/J
